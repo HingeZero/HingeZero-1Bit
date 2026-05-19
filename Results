@@ -1,0 +1,17 @@
+HingeZero 1-bit packed memory test: 1M stored memories, 512-bit patterns, 25% corruption, exact recovery in 50/50 trials using ~61 MB packed storage.
+=== HingeZero 1-bit packed test ===
+N=512 | P=1,000,000 | trials=50 | top_k=64 | bit_flip=0.25
+packed_MB: 61.04
+[001] true=396562 pred=396562 hit=True match=512/512 margin=205
+[002] true=673662 pred=673662 hit=True match=512/512 margin=202
+[003] true=457250 pred=457250 hit=True match=512/512 margin=200
+[004] true=503212 pred=503212 hit=True match=512/512 margin=199
+[005] true=269337 pred=269337 hit=True match=512/512 margin=202
+[006] true=293447 pred=293447 hit=True match=512/512 margin=202
+[007] true=294144 pred=294144 hit=True match=512/512 margin=200
+[008] true=291203 pred=291203 hit=True match=512/512 margin=205
+[009] true=728522 pred=728522 hit=True match=512/512 margin=204
+[010] true=150786 pred=150786 hit=True match=512/512 margin=205
+
+=== RESULTS ===
+top1_accuracy: 1.0
