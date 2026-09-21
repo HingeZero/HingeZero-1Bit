@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HingeZero-1Bit Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="badge">HingeZero 1-bit associative memory</div>
+        <h1>Fast, compressed retrieval for edge-scale memory systems</h1>
+        <p class="subhead">
+          Compare a traditional dense-memory workflow against a packed 1-bit design built for speed,
+          memory efficiency, and robustness under noise.
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="panel controls-panel">
+          <div class="panel-header">
+            <h2>Demo controls</h2>
+          </div>
+
+          <div class="control-group">
+            <label for="memoryCount">Stored memories</label>
+            <div class="with-value">
+              <input id="memoryCount" type="range" min="100000" max="1000000" step="100000" value="1000000" />
+              <span id="memoryCountValue">1,000,000</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="dimensions">Dimensions</label>
+            <div class="with-value">
+              <input id="dimensions" type="range" min="128" max="1024" step="64" value="512" />
+              <span id="dimensionsValue">512</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="bitNoise">Bit corruption</label>
+            <div class="with-value">
+              <input id="bitNoise" type="range" min="0" max="35" step="1" value="25" />
+              <span id="bitNoiseValue">25%</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label for="topK">Top-K candidates</label>
+            <div class="with-value">
+              <input id="topK" type="range" min="8" max="128" step="8" value="64" />
+              <span id="topKValue">64</span>
+            </div>
+          </div>
+
+          <button id="runDemo" class="cta">Run benchmark</button>
+        </section>
+
+        <section class="panel results-panel">
+          <div class="panel-header">
+            <h2>Performance snapshot</h2>
+          </div>
+
+          <div class="metrics-grid">
+            <article class="metric-card success">
+              <span class="label">Packed storage</span>
+              <strong id="storageMetric">61 MB</strong>
+            </article>
+            <article class="metric-card accent">
+              <span class="label">Top-1 accuracy</span>
+              <strong id="accuracyMetric">100%</strong>
+            </article>
+            <article class="metric-card">
+              <span class="label">HingeZero latency</span>
+              <strong id="hingeLatencyMetric">~2.8 ms</strong>
+            </article>
+            <article class="metric-card warning">
+              <span class="label">Industry latency</span>
+              <strong id="industryLatencyMetric">~17.1 ms</strong>
+            </article>
+          </div>
+
+          <div class="comparison">
+            <div class="bar-row">
+              <div class="bar-label">Legacy dense method</div>
+              <div class="bar-track">
+                <div id="industryBar" class="bar bar-industry"></div>
+              </div>
+              <div id="industryBarValue" class="bar-value">17.1 ms</div>
+            </div>
+
+            <div class="bar-row">
+              <div class="bar-label">HingeZero 1-bit</div>
+              <div class="bar-track">
+                <div id="hingeBar" class="bar bar-hinge"></div>
+              </div>
+              <div id="hingeBarValue" class="bar-value">2.8 ms</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel insight-panel">
+        <div class="panel-header">
+          <h2>Why this matters</h2>
+        </div>
+
+        <div class="insight-grid">
+          <article>
+            <h3>1. Compressed by design</h3>
+            <p>
+              HingeZero stores each memory as a packed 1-bit vector instead of a full float-heavy representation,
+              drastically reducing memory footprint without sacrificing retrieval quality.
+            </p>
+          </article>
+
+          <article>
+            <h3>2. Search stays fast</h3>
+            <p>
+              Candidate selection is based on packed Hamming distance, which makes top-K filtering efficient and
+              scalable for large associative memory tables.
+            </p>
+          </article>
+
+          <article>
+            <h3>3. Recovery under noise</h3>
+            <p>
+              A small local refinement pass corrects noisy candidates and preserves high recall even when a large
+              fraction of bits are corrupted.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="demo.js"></script>
+  </body>
+</html>
